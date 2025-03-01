@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 class Program
@@ -9,7 +9,6 @@ class Program
     static string rutaClasificados = Path.Combine(rutaLaboratorio, "ArchivosClasificados");
     static string rutaProyectos = Path.Combine(rutaLaboratorio, "ProyectosSecretos");
     static string rutaArchivoInventos = Path.Combine(rutaLaboratorio, "inventos.txt");
-
     static void CrearCarpeta(string rutaCarpeta) // Función para  crear una carpeta si no existe
     {
         try
@@ -268,8 +267,10 @@ class Program
             Console.WriteLine("6. Mover archivo a ArchivosClasificados");
             Console.WriteLine("7. Eliminar archivo inventos.txt");
             Console.WriteLine("8. Listar archivos en la carpeta");
-            Console.WriteLine("9. Salir");
+            Console.WriteLine("9. Crear la carpeta ProyectosSecretos");
+            Console.WriteLine("10. Salir");
             Console.Write("Selecciona una opción: ");
+
 
             switch (Console.ReadLine())
             {
@@ -281,7 +282,11 @@ class Program
                 case "6": MoverArchivo(); break;
                 case "7": EliminarArchivo(); break;
                 case "8": ListarArchivosEnCarpeta(rutaLaboratorio); break;
-                case "9": return;
+                case "9":
+                    CrearCarpeta(rutaProyectos); 
+                    Console.WriteLine("Carpeta 'ProyectosSecretos' creada.");
+                    break;
+                case "10": return;
                 default: Console.WriteLine("Opción inválida."); break;
             }
             Console.WriteLine("\nPresiona ENTER para continuar...");
